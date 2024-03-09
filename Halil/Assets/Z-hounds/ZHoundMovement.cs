@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class ZombieMovement : MonoBehaviour
+public class ZHoundMovement : MonoBehaviour
 {
     [SerializeField] private Transform player;
-    private NavMeshAgent agent; 
-    
+    private NavMeshAgent agent;
+
     private float _timeMod; public float spd, spdPer = 1;
+
 
     //Stats
     [SerializeField] private float currentHP, attack, maxHP, baseAttack;
