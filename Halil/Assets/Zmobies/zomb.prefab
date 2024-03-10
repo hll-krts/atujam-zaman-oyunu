@@ -172,13 +172,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67c71e5da5a810f4f81a249ae72680a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  spd: 2.5
-  spdPer: 1
-  currentHP: 0
-  attack: 0
+  moveSpeed: 2.5
   maxHP: 70
-  baseAttack: 5
+  attack: 5
+  spdPer: 1
+  player: {fileID: 0}
   controlScript: {fileID: 0}
 --- !u!114 &3981691956333692757
 MonoBehaviour:

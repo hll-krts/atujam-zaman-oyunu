@@ -153,11 +153,9 @@ MonoBehaviour:
   hoverAltitude: 2.5
   invisCD: 7
   invisDuration: 4
-  currentHP: 0
-  attack: 0
-  maxHP: 100
-  baseAttack: 10
-  controlScript: {fileID: 0}
+  ignoreL:
+    serializedVersion: 2
+    m_Bits: 448
 --- !u!114 &915614206383598854
 MonoBehaviour:
   m_ObjectHideFlags: 0

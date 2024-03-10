@@ -3,37 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class ZombieMovement : MonoBehaviour
+public class ZombieMovement : AllCharacters
 {
-    [SerializeField] private Transform player;
-    private NavMeshAgent agent; 
-    
-    private float _timeMod; public float spd, spdPer = 1;
-
-    //Stats
-    [SerializeField] private float currentHP, attack, maxHP, baseAttack;
-    [SerializeField] private GameControlScript controlScript;
-
-    private void Awake()
+    private void OnTriggerEnter(Collider other)
     {
-        controlScript = GameObject.FindObjectOfType<GameControlScript>();
-
-        currentHP = maxHP + controlScript.hpVars;
-        attack = baseAttack + controlScript.atkVars;
+        if (other.CompareTag("DikenOt"))
+        {
+            StartCoroutine(DotDamage());
+        }
     }
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerExit(Collider other)
     {
-        agent = GetComponent<NavMeshAgent>();
-        player = GameObject.FindWithTag("Player").transform;
+        if (other.CompareTag("DikenOt"))
+        {
+            StopCoroutine(DotDamage());
+        }
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    IEnumerator DotDamage()
     {
-        _timeMod = GetComponent<SpeedController>().thisObjectsTimeScale;
-        agent.speed = spd * _timeMod * spdPer;
-
-        agent.destination = player.position;
+        Debug.Log("Damaj dealt");
+        yield return new WaitForSeconds(1);
     }
 }

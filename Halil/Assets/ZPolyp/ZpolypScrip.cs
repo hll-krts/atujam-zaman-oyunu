@@ -10,18 +10,7 @@ public class ZPolyp : MonoBehaviour
     public float speed, spdPer = 1, hoverAltitude, invisCD, invisDuration;
     private float _timeMod;
 
-
-    //Stats
-    [SerializeField] private float currentHP, attack, maxHP, baseAttack;
-    [SerializeField] private GameControlScript controlScript;
-
-    private void Awake()
-    {
-        controlScript = GameObject.FindObjectOfType<GameControlScript>();
-
-        currentHP = maxHP + controlScript.hpVars;
-        attack = baseAttack + controlScript.atkVars;
-    }
+    public LayerMask ignoreL;
 
     private void Start()
     {
@@ -35,7 +24,7 @@ public class ZPolyp : MonoBehaviour
         Ray LandingRay = new Ray(transform.position, Vector3.down);
         //Debug.DrawRay(transform.position, Vector3.down * hoverAltitude);
 
-        if(Physics.Raycast(LandingRay, out hit, hoverAltitude) || transform.position.y < target.transform.position.y)
+        if(Physics.Raycast(LandingRay, out hit, hoverAltitude, ~ignoreL) || transform.position.y < target.transform.position.y)
         {
             this.transform.position += new Vector3(0, 0.1f, 0);
         }
